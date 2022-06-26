@@ -1,9 +1,12 @@
 import Main from "./components/Main";
+import { GlobalProvider } from "./contexts/GlobalState";
 
 const App = () => {
   return (
     <>
-      <Main />
+      <GlobalProvider>
+        <Main />
+      </GlobalProvider>
     </>
   );
 };

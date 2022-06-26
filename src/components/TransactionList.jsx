@@ -1,9 +1,23 @@
-import React from 'react'
+import React, { useContext } from "react";
+import { GlobalContext } from "../contexts/GlobalState";
+
+import Transaction from "./Transaction";
 
 const TransactionList = () => {
+  const { transactions } = useContext(GlobalContext);
   return (
-    <div>TransactionList</div>
-  )
-}
+    <div>
+      <div className="max-w-[400px] mx-auto bg-[#ede9fe] p-4 rounded">
+        <h2 className="text-xl font-bold mb-3">Transaction History</h2>
+        <hr className="border-2 bg-gradient-to-r from-pink-300 via-purple-300 to-indigo-400" />
+        <div className="pt-2">
+          {transactions.map((transaction) => {
+            return <Transaction key={transaction.id} {...transaction} />;
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
 
-export default TransactionList
+export default TransactionList;
